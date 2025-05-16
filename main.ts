@@ -1,4 +1,4 @@
-radio.setGroup(11)
+radio.setGroup(173)
 
 let y = 0
 let x = 0
