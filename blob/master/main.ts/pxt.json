@@ -1,0 +1,25 @@
+{
+    "name": "2024-p1a-alg-peewee-car-jakub-kreisinger-blob-master-maints",
+    "dependencies": {
+        "core": "*",
+        "radio": "*",
+        "microphone": "*",
+        "2024-p1a-alg-pxt-peewee-car-jakub-kreisinger": "github:pslib-cz/2024-p1a-alg-pxt-peewee-car-jakub-kreisinger"
+    },
+    "files": [
+        "main.blocks",
+        "main.ts",
+        "README.md"
+    ],
+    "testFiles": [
+        "test.ts"
+    ],
+    "targetVersions": {
+        "target": "7.0.61",
+        "targetId": "microbit"
+    },
+    "supportedTargets": [
+        "microbit"
+    ],
+    "preferredEditor": "blocksprj"
+}
