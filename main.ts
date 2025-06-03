@@ -4,25 +4,25 @@ radio.setFrequencyBand(4)
 radio.setTransmitSerialNumber(true)
 
 let serialNumber: number
-let xd = 0
-let yd = 0
+let x = 0
+let y = 0
 let tn = 0
 let sd = 0
 let parts: string[] = []
 
-function ServoControl(xdTilt: number, ydTilt: number) {
-    sd = Math.map(xdTilt, -1023, 1023, -200, 200)
+function ServoControl(xTilt: number, yTilt: number) {
+    sd = Math.map(xTilt, -1023, 1023, -200, 200)
     sd = Math.constrain(sd, 0, 200)
-    tn = Math.map(ydTilt, -1023, 1023, -200, 200)
+    tn = Math.map(yTilt, -1023, 1023, -200, 200)
     tn = Math.constrain(tn, 0, 200)
-    if (xdTilt < -100) {
+    if (xTilt < -100) {
         // vpřed (forward)
-        PCAmotor.MotorRun(PCAmotor.Motors.M4, (xdTilt + ydTilt) / 2)
-        PCAmotor.MotorRun(PCAmotor.Motors.M1, (xdTilt - ydTilt) / 2)
-    } else if (ydTilt > 100) {
+        PCAmotor.MotorRun(PCAmotor.Motors.M4, (xTilt + yTilt) / 2)
+        PCAmotor.MotorRun(PCAmotor.Motors.M1, (xTilt - yTilt) / 2)
+    } else if (yTilt > 100) {
         // pozpátku (reverse)
-        PCAmotor.MotorRun(PCAmotor.Motors.M1, xdTilt)
-        PCAmotor.MotorRun(PCAmotor.Motors.M4, xdTilt)
+        PCAmotor.MotorRun(PCAmotor.Motors.M1, xTilt)
+        PCAmotor.MotorRun(PCAmotor.Motors.M4, xTilt)
     } else {
         // stop
         PCAmotor.MotorStopAll()
@@ -39,9 +39,9 @@ radio.onReceivedString(function (receivedString) {
         } else {
             parts = receivedString.split(",")
             if (parts.length == 2) {
-                xd = parseInt(parts[0])
-                yd = parseInt(parts[1])
-                ServoControl(xd, yd)
+                x = parseInt(parts[0])
+                y = parseInt(parts[1])
+                ServoControl(x, y)
             }
         }
     }
@@ -50,5 +50,3 @@ radio.onReceivedString(function (receivedString) {
 input.onButtonPressed(Button.B, function () {
     basic.showIcon(IconNames.Skull)
 })
-
-
